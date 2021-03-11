@@ -143,13 +143,35 @@ const upperFirst = function(stringGiven) {
 Write a function "cutString" to create a new string without the first and last character of a given string.
 */
 
-/* WRITE YOUR CODE HERE */
+const cutString = function(givenString){
+
+    let lengthOfString = givenString.length
+
+    givenString = givenString.slice(1, lengthOfString-1)
+    return givenString
+}
+
+//console.log(cutString('sun rises in the east'))
 
 /* EXERCISE 10
 Write a function "giveMeRandom" which accepts a number n and returns an array containing n random numbers between 0 and 10.
 */
 
-/* WRITE YOUR CODE HERE */
+const giveMeRandom = function(n){
+
+    let arrayArray = []
+    for(i=0; i<n; i++){
+
+        let randomInt = Math.random() * 11
+        randomInt = Math.floor(randomInt)
+        arrayArray.push(randomInt)
+    }
+
+    return arrayArray
+
+}
+
+console.log(giveMeRandom(9))
 
 /* WHEN YOU ARE FINISHED
 Commit and push the code to your personal GitHub repository and share the link to your commit in Eduflow.
