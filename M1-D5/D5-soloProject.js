@@ -411,7 +411,7 @@ const onlyInThisMillennium = function(){
 
     for (movie in movies){
 
-         if(parseInt(movies[movie].Year) <=2000 ){ 
+         if(parseInt(movies[movie].Year) >=2000 ){ 
              lastMillMovies.push(movies[movie].Title)
          }
     }
@@ -539,10 +539,10 @@ const halfTree = function(givenHeight){
 const tree = function(givenHeight){
  
     let lineLength = givenHeight + (givenHeight-1)
-    for (i =0; i<=givenHeight-1; i++){
+    for (let i =0; i<=givenHeight-1; i++){
 
         let treeLine = ''
-        for(position=1; position<= lineLength; position++){
+        for(let position=1; position<= lineLength; position++){
     
             
             if((position>=givenHeight-i)&&(position<=givenHeight+i)){
@@ -560,5 +560,22 @@ const tree = function(givenHeight){
 /* Ex.23
   Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
 */
+
+const isItPrime = function(givenNumber){
+
+
+    for(let i=1; i<=givenNumber-1; i++){
+
+        if(givenNumber%i === 0){
+
+            console.log('Given Number is not a PRIME!!!')
+            break;
+        }
+    }
+
+    console.log()
+}
+
+isItPrime(3)
 
 /* This movies array is used throughout the exercises. Please don't change it :)  */
