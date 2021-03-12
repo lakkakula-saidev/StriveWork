@@ -349,8 +349,6 @@ const movies = [
             "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
     },
 ]
-
-
 /* Ex.11
    Write a function called "deleteProp" which receives an object and a string as parameters, and returns the given object after deleting its property named as the given string.
 */
@@ -360,59 +358,46 @@ const deleteProp = function(givenObj, givenString){
     delete givenObj[givenString]
     return givenObj
 }
-
 //console.log(deleteProp(movies[1], 'Title'))
 
 /* Ex.12 
     Write a function called "olderMovie" which finds the oldest movie in the array provided at the end of this file.
 */
-
 const olderMovie = function(movies){
-
     let oldestYear = 2021
     let oldestTitle = 'None'
 
     for(movie in movies){
 
         if (parseInt(movies[movie].Year) < oldestYear){
-
             oldestTitle = movies[movie].Title
             oldestYear = movies[movie].Year
         }
         
     }
-
     return [oldestTitle,oldestYear]
 }
-
-
 //console.log(olderMovie(movies))
 
 /* Ex.13
     Write a function called "countMovies" which returns the number of movies contained in the array provided at the end of this file.
 */
-
 const countMovies = function(){
-
     return movies.length
 }
-
 //console.log(countMovies())
 
 /* Ex.14
     Write a function called "onlyTheTitles" which creates an array with just the titles of the movies provided in the array at the end of the file.
 */
-
 const onlyTheTitles = function(){
 
     let titles = []
 
     for(movie in movies){
-
     titles.push(movies[movie].Title)
     }
     return titles
-
 }
 const movieTitles = onlyTheTitles()
 //console.log(movieTitles)
@@ -420,28 +405,69 @@ const movieTitles = onlyTheTitles()
 /* Ex.15
    Write a function called "onlyInThisMillennium" which returns only the movies produced in this millennium.
 */
-
 const onlyInThisMillennium = function(){
 
-    for (movie in movies) {
+  const lastMillMovies = []
 
-        titles.push(movies[movie].Title)
+    for (movie in movies){
+
+         if(parseInt(movies[movie].Year) <=2000 ){ 
+             lastMillMovies.push(movies[movie].Title)
+         }
     }
-    return titles
-
+    return lastMillMovies
 }
+//console.log(onlyInThisMillennium())
 
 /* Ex.16 
     Write a function called "getMovieById" which receives an id as a parameter and returns the movie with the given id.
 */
 
+const getMovieById = function(id){
+
+    let movieName
+    for (movie in movies) {
+
+        if (movies[movie].imdbID === id) {
+            movieName = movies[movie].Title
+            break;
+        }
+    }
+    return movieName
+}
+
+//console.log(getMovieById("tt4154796"))
+
 /* Ex.17
     Write a function called "sumAllTheYears" which returns the sum of all the years in which the movies provided have been produced.
 */
+const sumAllTheYears = function(){
+    let movieSum=0
+
+    for(movie in movies){
+        movieSum = movieSum + parseInt(movies[movie].Year)
+    }
+    return movieSum
+}
+//console.log(sumAllTheYears())
 
 /* Ex.18
     Write a function called "searchByTitle" which receives a string as a parameter and returns all the movies which contain that string in the title.
 */
+
+const searchByTitle = function(givenString){
+    let movieNames = []
+
+    for(movie in movies){
+        let pattern = new RegExp(givenString)
+
+        if(pattern.test(movies[movie].Title)){
+            movieNames.push(movies[movie].Title)
+        }
+    }
+return movieNames
+}
+//console.log(searchByTitle('Avengers'))
 
 /* Ex.19
     Write a function called "searchAndDivide" which receives a string as a parameter and returns an object;
@@ -449,9 +475,36 @@ const onlyInThisMillennium = function(){
     and another array "unmatch" with all the remaining ones.
 */
 
+const searchAndDivide = function(givenString){
+
+    const movieObj = {}
+    const match = []
+    const unmatch=[]
+    for (movie in movies) {
+        let pattern = new RegExp(givenString)
+
+        if (pattern.test(movies[movie].Title)) {
+            match.push(movies[movie].Title)
+        }else{
+            unmatch.push(movies[movie].Title)
+        }
+    }
+    movieObj.match = match
+    movieObj.unmatch = unmatch
+    return movieObj
+}
+console.log(searchAndDivide('Avengers'))
+
 /* Ex.20
    Write a function called "removeIndex" which receives a number as a parameter and returns the movies array without the element in the given position.
 */
+
+const removeIndex = function(givenIndex){
+
+    movies.splice(givenIndex,1)
+return movies
+}
+//console.log(removeIndex(movies.length-1))
 
 // [EXTRAS] JS Advanced
 
@@ -463,6 +516,16 @@ const onlyInThisMillennium = function(){
   **
   ***
 */
+const halfTree = function(givenHeight){
+
+    for(i=1; i<=givenHeight; i++){
+        let treeString =''
+        for (j=1; j <= i; j++){
+            treeString = treeString + '*'
+        }console.log(treeString)
+    }
+}
+//halfTree(5)
 
 /* Ex.22 
   Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
@@ -473,6 +536,24 @@ const onlyInThisMillennium = function(){
   *****
 */
 
+const tree = function(givenHeight){
+
+    let length = givenHeight + (givenHeight-1)
+    
+    for(i=1; i<= givenHeight; i++){
+
+
+
+        if(condition){
+            treeLine = treeLine + '*'
+        }else{
+            treeLine = treeLine + ' '
+        }console.log(treeLine)
+    }
+
+
+
+}
 /* Ex.23
   Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
 */
