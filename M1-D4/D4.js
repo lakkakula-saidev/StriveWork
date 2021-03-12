@@ -51,11 +51,11 @@ Write a function "boundary" which accept an integer n and returns true if n is w
 
 const boundary = function(n){
 
-    let bool = (20 <= n <= 100)|| (n===400) ? true : false 
+    let bool = ((20 <= n && n <= 100))|| (n===400) ? true : false 
     return bool
 }
 
-//console.log(boundary(101))
+console.log(boundary(500))
 
 /* WRITE YOUR CODE HERE */
 
@@ -171,7 +171,7 @@ const giveMeRandom = function(n){
 
 }
 
-console.log(giveMeRandom(9))
+//console.log(giveMeRandom(9))
 
 /* WHEN YOU ARE FINISHED
 Commit and push the code to your personal GitHub repository and share the link to your commit in Eduflow.
