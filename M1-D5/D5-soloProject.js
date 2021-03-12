@@ -493,7 +493,7 @@ const searchAndDivide = function(givenString){
     movieObj.unmatch = unmatch
     return movieObj
 }
-console.log(searchAndDivide('Avengers'))
+//console.log(searchAndDivide('Avengers'))
 
 /* Ex.20
    Write a function called "removeIndex" which receives a number as a parameter and returns the movies array without the element in the given position.
@@ -537,23 +537,26 @@ const halfTree = function(givenHeight){
 */
 
 const tree = function(givenHeight){
+ 
+    let lineLength = givenHeight + (givenHeight-1)
+    for (i =0; i<=givenHeight-1; i++){
 
-    let length = givenHeight + (givenHeight-1)
+        let treeLine = ''
+        for(position=1; position<= lineLength; position++){
     
-    for(i=1; i<= givenHeight; i++){
-
-
-
-        if(condition){
-            treeLine = treeLine + '*'
-        }else{
-            treeLine = treeLine + ' '
+            
+            if((position>=givenHeight-i)&&(position<=givenHeight+i)){
+                treeLine = treeLine + '*'
+            }else{
+                treeLine = treeLine + ' '
+        }
         }console.log(treeLine)
     }
 
-
-
 }
+
+//tree(5)
+
 /* Ex.23
   Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
 */
