@@ -40,17 +40,27 @@ const toggleClass = function(){
     }
 }
 
+//Random color generator
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 //Function to color the price of each product in a different one every time it's invoked
 const priceColor = function(){
     
-    let tableData = document.querySelector('table').getElementsByTagName('tr')
-
-    for(i=1; i<= tableData.length;i++){
-
-        console.log(tableData[i].querySelector('td'))
-
+    let tableData = document.getElementsByTagName('tr')
+    for (i = 1; i <= tableData.length; i++) {
+    
+        let priceData = tableData[i].querySelectorAll('td')[2]
+        priceData.style.color= getRandomColor()
+    //console.log(typeof tableData)
     }
 
 }
+
 
