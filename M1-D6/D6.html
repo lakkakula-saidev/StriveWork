@@ -1,34 +1,20 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <link rel="stylesheet" href="D6styling.css">
     <title>Vodafone Mobiles GmbH</title>
 </head>
-<style>
-#images{
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 200px;
-}
-td{
-  padding: 20px;
-  border: 2px solid black;
-}
-table,tr{
-    width: 80%;
-}
-
-a{
-    text-decoration: none;
-}
-
-</style>
 
 <body>
 
     <h1>Vodafone Mobiles GmbH</h1>
 
+    <div>
+    <button onclick="toggleClass()">Toggle Class</button>
+    <button onclick="">Price Colour</button>
+    </div>
+    <br>
+    <br>
     <table>
         <tr>
             <th>Mobile Name</th>
@@ -111,7 +97,7 @@ a{
 
     <footer>
         <h4>Vodafone Mobiles GmbH</h4>
-        <address>Visit us.. <br>
+        <address id="address">Visit us.. <br>
             Max Plack Str. 3A <br>
             Rostock 18059 <br>
             Germany <br>
@@ -119,16 +105,9 @@ a{
         </address>
     </footer>
 </body>
-<script>
 
-let textHead = document.getElementsByTagName('h1')
-const textHeading = function(changeText){
-    
-    textHead = changeText
-}
-
+<script type = "text/javascript" src = "D6script.js" >
 </script>
-
 </html>
 
 <!-- You have been assigned to the creation of a Smartphone Shop Website. The homepage you're about to write is just a showcase of the products of the shop with some extra information. No shopping cart / checkout features are required.
