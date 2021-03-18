@@ -95,10 +95,16 @@ body{
                 Create a method "removeLast" which removes the last item from the task list
             */
 
-    const removeLast = function(){
+    
+
+    /*const removeLast = function(){
 
         let taskList = document.getElementById('myTaskList').getElementsByTagName('li')
         taskList[taskList.length-1].remove()
+    }*/
+    const taskList = document.getElementById('myTaskList')
+    const removeLast = () => {
+        taskList.children[taskList.children.length - 1].remove()
     }
       /* EXERCISE 7: 
                 Create a method "removeFirst" which removes the first item from the task list
@@ -108,7 +114,7 @@ body{
 
         let taskList = document.getElementById('myTaskList').getElementsByTagName('li')
         taskList[0].remove()
-        console.log(taskList)
+
     }
       /* EXERCISE 8: 
                Create a method "getTasksAsArray" which returns, and prints to the console an array containing the tasks as string
@@ -116,24 +122,28 @@ body{
 
     const getTasksAsArray = function(){
 
-        let taskList = document.getElementById('myTaskList').getElementsByTagName('li')
-        console.log(taskList)
+        let taskArray = []
+        let taskList = document.getElementById('myTaskList')
+        for(child of taskList.children){
+
+            taskArray.push(child.textContent)
+        }
+        return taskArray
     }
+
+    
       /* EXERCISE 9:
                Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
                onchange event listener ad applies it as background to every list item
             */
 
-    const changeTaskBackgroundColor = function(){
 
-        let colorPelette = document.getElementById('coloPicker')
-        colorPelette.addEventListener('change', function(event){
+    let colorPelete = document.getElementById('colorPicker')
 
-            console.log(event)
+    colorPelete.addEventListener('change', function(e){
 
-        },true)
-    }
-
+        document.getElementById('myTaskList').style.backgroundColor = event.target.value
+    })
 
       /* EXTRA */
 
@@ -146,8 +156,42 @@ body{
                - Break the code into many function for semplicity 
                - Reuse the functions previously created
             */
+ 
+     const bubblesort = function(){
 
+       let tasksArray = ["aaa", "zz", "bbb", "cde", "abc"]//getTasksAsArray()
+
+
+          
+       
+        //for(let i=1; tasksArray.length-1; i++) {
+        for(let outer=tasksArray.length - 1; outer > 0; outer--) {
+
+            for(let j=0; j < outer; j++){
+
+                console.log({outer, j, current: tasksArray[j], following: tasksArray[j+1]})
+
+                if(tasksArray[j].localeCompare(tasksArray[j+1]) === 1){
+
+                   /* temp = tasksArray[j + 1]
+                    tasksArray[j + 1] = tasksArray[j]
+                    tasksArray[j] = temp
+
+*/
+                     [tasksArray[j+1], tasksArray[j]] = [tasksArray[j], tasksArray[j+1]]
+
+                }
+                
+            }
+        }
+        console.log(tasksArray)
         
+            
+        }
+        
+
+    
+          
         
     </script>
   
