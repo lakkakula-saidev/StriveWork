@@ -36,10 +36,12 @@ body{
 }
 #button{
   margin-top: 40px;
+  margin-bottom: 50px;
   width: auto;
-  height: 30px;
+  height: 50px;
   position: relative;
-
+  font-size: 25px;
+  border-radius: 10px;
 }
 
 </style>
@@ -65,25 +67,32 @@ const boardCreate = function(){
     element.className = "num"
     element.innerText = i
     board.appendChild(element)
-
   }
 }
 
-let numbersList = []
+let numbersList = [0]
 let value = true
+let number=0
 
 function randomNumber() {
+ 
+  number = Math.floor(Math.random() * (76 - 1) + 1)
+ //  while (numbersList.includes(number)) {
+// number = Math.floor(Math.random() * (76 - 1) + 1)
+ //   numbersList.push(number)
+  //}
 
-  let number = Math.floor(Math.random() * (76 - 1) + 1)
-
-    return number
+  //console.log(numbersList)
+return number
 }
+
+
 
 const markNumber = function(){
   let newNumber = randomNumber()
 
   let boardNumber = document.getElementsByClassName('num')
-  boardNumber[newNumber].style.backgroundColor = 'green'
+  boardNumber[newNumber].style.backgroundColor = '#9aeda7'
 
 }
 
