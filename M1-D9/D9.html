@@ -21,26 +21,27 @@ body{
   margin-top: 50px;
   background-color: lightblue;
   width: 95%;
-  font-size:xx-large;
+  font-size:16px;
   border-radius: 10px;
 }
 
 .num {
   display: inline-block;
-  width: 16%;
-  height: 50px;
+  width: 4.63157894%;
+  height: 40px;
   position: relative;
   border: 2.3px solid wheat;
   text-align: center;
   border-radius: 5px;
+  padding-top: 5px;
 }
 #button{
   margin-top: 40px;
   margin-bottom: 50px;
   width: auto;
-  height: 50px;
+  height: 40px;
   position: relative;
-  font-size: 25px;
+  font-size: 16px;
   border-radius: 10px;
 }
 
@@ -75,25 +76,19 @@ let value = true
 let number=0
 
 function randomNumber() {
- 
-  number = Math.floor(Math.random() * (76 - 1) + 1)
- //  while (numbersList.includes(number)) {
-// number = Math.floor(Math.random() * (76 - 1) + 1)
- //   numbersList.push(number)
-  //}
+
+  
+    number = Math.floor(Math.random() * (76 - 1) + 1)
 
   //console.log(numbersList)
 return number
 }
 
 
-
 const markNumber = function(){
   let newNumber = randomNumber()
-
   let boardNumber = document.getElementsByClassName('num')
   boardNumber[newNumber].style.backgroundColor = '#9aeda7'
-
 }
 
 window.onload = function(){
