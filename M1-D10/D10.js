@@ -103,5 +103,16 @@ function addClass(){
 
 function linkStyle(){
 
-    
+    let Links = document.getElementsByTagName('td')
+    for(let i=4; i<Links.length; i= i+5 ){
+        
+        Links[i].style.backgroundColor = 'red'
+    }    
+}
+linkStyle()
+
+window.onload = function(){
+
+    console.log('Page Loaded')
+
 }
