@@ -15,22 +15,51 @@
 body{
   margin: auto;
   max-width: 768px;
+  font-size: 25px;
+
 }
 
 #table{
   margin-top: 50px;
-  background-color: lightblue;
   width: 95%;
+  height: 178px;
   font-size:16px;
-  border-radius: 10px;
+  font-weight: 600;
+}
+
+#div_userCard_0,#div_userCard_1,#div_userCard_2,#div_userCard_3,#div_userCard_4{
+  margin-top: 50px;
+  width: 28.5%;
+  height: 222.5px;
+  font-size:16px;
+  font-weight: 600;
+}
+
+#boards{
+margin-top: 30px;
+position: relative;
+font-size: 22px;
+
 }
 
 .num {
   display: inline-block;
+  background-color: lightblue;
   width: 4.63157894%;
   height: 40px;
   position: relative;
-  border: 2.3px solid wheat;
+  border: 2.3px solid black;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.user_num {
+  display: inline-block;
+  width: 17.88%;
+  background-color: lightblue;
+  height: 40px;
+  position: relative;
+  border: 2.3px solid black;
   text-align: center;
   border-radius: 5px;
 }
@@ -42,6 +71,8 @@ body{
   position: relative;
   font-size: 16px;
   border-radius: 10px;
+  font-weight: 600;
+  border: 2px solid black;
 }
 
 </style>
@@ -54,15 +85,53 @@ body{
   <!-- Number cells will be inserted here -->
 </div>
 
-<input type="button" id= 'button' value="Press for Number" id="nextNum" onclick="markNumber()">
+<input type="button" id= 'button' value="Press for Number" onclick="markNumber()">
+
+<div id="submitBoards">
+  <label for="quantity" id="boards">Number of boards</label>
+  <input type="number" id="quantity" name="quantity" min="1" max="3">
+  <input type="submit" id="submit">
+</div>
+
 
 <script>
+function markUserCard(newNumber){
+    let tempNum = document.getElementsByClassName('user_num')
+    for(let j=0; j< tempNum.length;j++){
+      if(`${newNumber}`=== tempNum[j].innerHTML){
+        tempNum[j].style.backgroundColor= '#C4A484'
+      } 
+  }
+}
+
+
+
+function createFooter(){
+  let footerElement = document.createElement('footer')
+  footerElement.style.marginTop = '100px';
+  document.body.appendChild(footerElement)
+}
+
+const userCard = function(numBoards){
+let userCardNumbers = shuffle(numGenerate)
+  for(let i=0; i<numBoards; i++){
+    let newDiv = document.createElement('div')
+    newDiv.id = `div_userCard_${i}`
+    document.body.appendChild(newDiv)
+      for (let j = 1; j <= 25; j++) {
+        let tempDiv = document.createElement('div')
+        tempDiv.className = `user_num`
+        tempDiv.innerText = userCardNumbers[j]
+        newDiv.appendChild(tempDiv)
+    }
+    userCardNumbers = shuffle(numGenerate)
+  }
+  createFooter()
+}
 
 const boardCreate = function(){
-
   let board = document.getElementById('table')
   for(let i=1; i<=76; i++){
-
     let element = document.createElement('div')
     element.className = "num"
     element.innerText = i
@@ -70,30 +139,52 @@ const boardCreate = function(){
   }
 }
 
-let numbersList = [0]
+  function shuffle(a) {
+    for (let k = a.length - 1; k > 0; k--) {
+      const j = Math.floor(Math.random() * (k + 1));
+      [a[k], a[j]] = [a[j], a[k]];
+    }
+    return a;
+  }
+
+let randMatrix = []
+let numGenerate = []
 let value = true
 let number=0
+nextNum=0
+let numUserBoards = 0
 
-function randomNumber() {
+  function randomMatrix() {
+    for (let i = 1; i<76; i++){
+      numGenerate.push(i)
+    }
+  numGenerate = shuffle(numGenerate)
+  for(let i = 0; i < 76; i++){
+    randMatrix.push(numGenerate[i])
+  }
+}
 
+randomMatrix()
+
+let submitButton = document.getElementById('submit')
+submitButton.addEventListener('click', function(){
+  numUserBoards = document.getElementById('quantity').value
+  userCard(numUserBoards)
+let tempDiv = document.getElementById('submitBoards')
+tempDiv.remove()
+})
   
-    number = Math.floor(Math.random() * (76 - 1) + 1)
-
-  //console.log(numbersList)
-return number
-}
-
-
 const markNumber = function(){
-  let newNumber = randomNumber()
+  let newNumber = randMatrix[nextNum]
   let boardNumber = document.getElementsByClassName('num')
-  boardNumber[newNumber].style.backgroundColor = '#9aeda7'
+  boardNumber[newNumber].style.backgroundColor = '#C4A484'
+  markUserCard(newNumber+1)
+  nextNum+=1
 }
 
-window.onload = function(){
 
+window.onload = function () {
 boardCreate();
-
 };
 </script>
 </html>
