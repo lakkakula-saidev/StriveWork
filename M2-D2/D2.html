@@ -17,7 +17,23 @@
             - The album duration
             - etc
          */
+        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+        body{
+            background-color:burlywood;
+        }
+        #recommended{
+            font-weight: 900;
+            font-size:x-large;
+            font-family: cursive;
+        }
+        img {
 
+max-height: 400px;
+
+}
+        .navbar{
+            height: 100px ;
+        }
          .cont{
             border: 5px solid red;
          }
@@ -35,15 +51,17 @@
              font-weight: 800;
          }
          .genre{
-             background-color: burlywood;
+            font-weight: 600;
+            font-family: 'Shadows Into Light', cursive;
          }
          .duration{
             font-weight: 500;
-            font-size:x-large;
+            font-size:medium;
          }
          
          .jumbotron{
              padding:0px;
+             height:auto;
          }
     </style>
   </head>
@@ -52,9 +70,8 @@
             Implement a navigation bar using the bootstrap component
             This navigation bar must link every section in your page
         -->
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <a class= " navbar-brand" href="#">World of Music</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -68,22 +85,12 @@
                         <a class="nav-link" href="#reviews">Reviews</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                        <a class="nav-link" href="#">Search</a>
                     </li>
                 </ul>
             </div>
         </nav>
+    
 
     <!-- EXERCISE 3
             Create a responsive section for your favourite albums.
@@ -96,24 +103,22 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 mb-md-4"><div class="card shadow">
-            <img src="http://placehold.it/300x300" class="card-img-top" alt="...">
+            <img src="One direction.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Album 1</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              <h4 class="card-title">Perfect</h4>
+              <p class="card-text"><b class="genre"> Pop music</b> <br>
+                "Perfect" is a song by English-Irish boy band One Direction, released on 16 October 2015 
               </p>
               
             </div>
           </div></div>
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-3 mb-md-4"><div class="card shadow">
-            <img src="http://placehold.it/300x300" class="card-img-top" alt="...">
+            <img src="beatles.jpg" class="card-img-top h-80" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Album 2</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
+              <h5 class="card-title">Meet the Beatles!</h5>
+            <p class="card-text"><b class="genre"> Pop music</b> <br>
+                "Perfect" is a song by English-Irish boy band One Direction, released on 16 October 2015
+            </p>
               
             </div>
           </div></div>
@@ -153,25 +158,19 @@
             - Tracklist
             - ... And whatever you think it's interesting about it!
         -->
-<div id="reviews">        
+<div id="reviews">       
     <div class="container">
-        <div class="container mt-4">
-            <div class="row">
-                <div class="jumbotron jumbotron-fluid border border-primary mt-3">
-                    <div class="col-sm-6 col-md-3 col-lg-3">
-                        <h1 class="display-4">The Starboy</h1>
-                        <p class="lead">Album von The Weeknd.</p>
-                    </div>
-    
-            </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3 mt-sm-4 mb-md-4 mt-lg-4"><div>Singer <br><b class="singer">The Weeknd</b> 
-                </div></div>
-                <div class=" col-sm-6 col-md-3 col-lg-3 mt-4"><div>Duration<br><b class="duration">1 Hour 15 Min</b></div></div>
-            </div>
-            <div class="row">
-                <div></div>
-            </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-sm-3 mt-md-3 mt-lg-3 mb-md-4 mb-lg-4"><span id= 'recommended'> Recommended album </span></div>
         </div>
+        <div class="row">
+         <img class=" col-sm-12 col-md-6 col-lg-4 mt-md-4 mt-lg-4" style="float: none; margin: 0 auto;"src="starboy.jpg" stylealt="">
+            <div class=" col-sm-12 col-md-6 col-lg-6 mt-md-4 mt-lg-4" style="float: none; margin: 0 auto;"><br><b class="singer"> The Weeknd</b><br><b class="genre">Pop, Contemporary R&B</b><br><b class="duration">1 Hour 15 Min</b><br>Starboy<br>
+                Party Monster<br>False Alarm<br>Rockin'<br>Secrets<br><br> The album starts off with the title track “Starboy”, which features Daft Punk and amassed over 17 million streams in its
+                first 3 days. The song is grooving and laid back with catchy, sarcastic vocals. The songs are dark, brooding and mysterious but they gleam with insight and tactful storytelling. The sounds are
+                glamorous, the melodic vocals shimmer and the beats stick deep in your bones. The entire piece is fluid and cohesive
+                while showing the diversity he hoped to express.</div>               
+            </div>
         </div>
 </div>
         
@@ -180,7 +179,51 @@
             Worst album list! Find out the music you don't really like or you find overrated and list it
             in this "hall of shame" chart!
         -->
-
+<div class= 'hallOfShame'>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-sm-1 mt-md-3 mt-lg-4 mb-md-2 mb-lg-2"><span id= 'recommended'> Hall of Shame</span></div>
+        </div>
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="beatles.jpg" class="d-block w-25 mt-5 " alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="starboy.jpg" class="d-block w-25 mt-5" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="One direction.jpg" class="d-block w-25 mt-5" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
+</div>
     <!-- EXERCISE 6
             Do you have any musician / band you admire or you are a fan of?
             This section is dedicated to him / her / them!
@@ -212,5 +255,10 @@
             Add in the footer a field that counts, on page load, how many ALBUMS there are on the page 
         -->
   <footer style="margin-top: 100px;"></footer>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
 </body></html>
