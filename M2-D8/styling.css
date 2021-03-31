@@ -1,0 +1,36 @@
+div.footer li {
+  color: #ae8c8a;
+}
+
+.customNavbar {
+  background-color: #007bff;
+}
+.task1 {
+  height: 400px !important ;
+  border: solid;
+  border-radius: 10%;
+  overflow: hidden;
+}
+.firstColumn {
+  background-color: #6bb56b;
+}
+.firstColumn div {
+  padding: 50%;
+}
+.secondColumn {
+  background-color: #007bff;
+}
+.secondColumn div {
+  text-align: center;
+  margin-top: 340px;
+  font-weight: bold;
+}
+.columnThree {
+  background-color: #ffe41f;
+}
+.columnThree div {
+  padding: 50%;
+}
+.exercises {
+  text-align: center;
+}
