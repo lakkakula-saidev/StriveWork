@@ -69,7 +69,7 @@ function anagramCheck(str1,str2){
 
     }
 }
-//console.log(anagramCheck('ffffff','ffffff'))
+//console.log(anagramCheck('ffffff','fffkkk'))
 
 /* 3) ANAGRAMS 2
 
@@ -79,6 +79,8 @@ Given a word and a list of possible anagrams, select the correct sublist.
 
     "listen" and a list of candidates like "enlists" "google" "inlets" "banana" the program should return a list containing "inlets".
 */
+
+
 
 /* 4) PALINDROME
 
@@ -93,6 +95,19 @@ and punctuation in determining if the string is a palindrome.
     palindrome("abcdefg") === false
  */
 
+function palindromeCheck(givenString){
+    let temp = ''
+    for(let i = givenString.length-1; i>=0 ;i--){
+        temp += givenString.charAt(i)
+    }
+    if(givenString.localeCompare(temp) ===0){
+        return 'The given string is a Palindrome'
+    }else{
+        return 'The given string is not a Palindrome'
+    }
+}
+
+console.log(palindromeCheck("aaabbaaa"))
 /* 5) REVERSE INT
 
 Given an integer, return an integer that is the reverse
