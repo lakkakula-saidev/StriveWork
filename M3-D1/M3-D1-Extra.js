@@ -11,17 +11,12 @@ commonly used in the string.
 function maxChar(givenString){
 
     let charOccu = 0
-    let maxChar= ''
     for(let char in givenString){
-        
-        charOccu = (givenString.split(givenString[char]).length)>= (givenString.split(givenString[charOccu]).length) ? char : charOccu
-        
-        
+        charOccu = (givenString.split(givenString[char]).length)> (givenString.split(givenString[charOccu]).length) ? char : charOccu
     }
-
     return givenString.charAt(charOccu)
 }
-//console.log(maxChar('accccbd'))
+console.log(maxChar('accccbd'))
 
 
 /* 2) ANAGRAMS
@@ -107,7 +102,7 @@ function palindromeCheck(givenString){
     }
 }
 
-console.log(palindromeCheck("aaabbaaa"))
+//console.log(palindromeCheck("aaabbaaa"))
 /* 5) REVERSE INT
 
 Given an integer, return an integer that is the reverse
@@ -121,6 +116,20 @@ ordering of numbers.
     reverseInt(-15) === -51
     reverseInt(-90) === -9
  */
+
+function reverseNum(givenNum){
+    givenNum = givenNum.toString()
+    let temp = ''
+    for(let i = givenNum.length-1; i>=0 ;i--){
+        temp += givenNum.charAt(i)
+    }
+    if(givenNum<0){
+        temp = parseInt(temp)
+        temp = -1 * temp 
+    } 
+    console.log(temp)
+}
+//reverseNum(-159)
 
 /* 6) STEPS
 

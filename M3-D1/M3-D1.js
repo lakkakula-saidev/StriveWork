@@ -330,7 +330,6 @@ function numberConversion(numGiven){
                     numString = numString+ 'Riccardo'
                 break;
             } 
-        
         }
     }
     }else{
