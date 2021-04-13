@@ -65,20 +65,7 @@
     </div>
 
     <div class="container both-scroll both-mandatory align-center">
-      <div class="wrapper">
-        <div class="element">
-          <code>scroll-snap-align: center;</code>
-        </div>
-        <div class="element">
-          <code>scroll-snap-align: center;</code>
-        </div>
-        <div class="element">
-          <code>scroll-snap-align: center;</code>
-        </div>
-        <div class="element">
-          <code>scroll-snap-align: center;</code>
-        </div>
-      </div>
+      <div class="wrapper"></div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -170,7 +157,9 @@
           newtitle.innerHTML = artist1[i].title;
           AlbumsList.appendChild(newtitle);
         }
-        document.body.appendChild(albumsDiv);
+        let mainDiv = document.getElementsByClassName("wrapper")[0];
+        console.log(mainDiv);
+        mainDiv.appendChild(albumsDiv);
       }
     </script>
   </body>
