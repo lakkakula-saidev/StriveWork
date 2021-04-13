@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="testing.css" />
+    <style>
+      .content {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      li {
+        margin-top: 10px;
+      }
+
+      div.artistAlbums {
+        scroll-snap-align: start;
+      }
+    </style>
+  </head>
+  <body class="content" onload="loadArtists()">
+    <h1 style="margin-top: 50px">This is a spotify page</h1>
+    <div class="artist" style="margin-top: 50px">
+      <h4>Click for your favorite artist albums</h4>
+      <ol id="myList">
+        <li>
+          EMINEM
+          <button
+            type="button"
+            onclick="displayAlbums()"
+            class="btn btn-primary btn-sm"
+          >
+            List Albums
+          </button>
+          <button class="btn btn-primary btn-sm">Count Unique</button>
+        </li>
+        <li>
+          METALLICA
+          <button type="button" class="btn btn-primary btn-sm">
+            List Albums
+          </button>
+          <button class="btn btn-primary btn-sm">Count Unique</button>
+        </li>
+        <li>
+          behemoth
+          <button type="button" class="btn btn-primary btn-sm">
+            List Albums
+          </button>
+          <button class="btn btn-primary btn-sm">Count Unique</button>
+        </li>
+      </ol>
+    </div>
+
+    <div class="container both-scroll both-mandatory align-center">
+      <div class="wrapper">
+        <div class="element">
+          <code>scroll-snap-align: center;</code>
+        </div>
+        <div class="element">
+          <code>scroll-snap-align: center;</code>
+        </div>
+        <div class="element">
+          <code>scroll-snap-align: center;</code>
+        </div>
+        <div class="element">
+          <code>scroll-snap-align: center;</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      let artist1;
+      let artist2;
+      let artist3;
+
+      function loadArtists() {
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "1fdc6bcd7fmsh965a972f93225adp179c0fjsn942ae228398a",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((results) => {
+            artist1 = results.data;
+            console.log(artist1);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "1fdc6bcd7fmsh965a972f93225adp179c0fjsn942ae228398a",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((results) => {
+            artist2 = results.data;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "1fdc6bcd7fmsh965a972f93225adp179c0fjsn942ae228398a",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((results) => {})
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+
+      function displayAlbums() {
+        let albumsDiv = document.createElement("div");
+        albumsDiv.classList.add("artistAlbums");
+        let AlbumsList = document.createElement("ol");
+        albumsDiv.appendChild(AlbumsList);
+
+        for (let i = 0; i < artist1.length; i++) {
+          let newtitle = document.createElement("li");
+          newtitle.innerHTML = artist1[i].title;
+          AlbumsList.appendChild(newtitle);
+        }
+        document.body.appendChild(albumsDiv);
+      }
+    </script>
+  </body>
+</html>
