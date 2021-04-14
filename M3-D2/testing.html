@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="testing.css" />
     <style>
       .content {
-        max-width: 500px;
+        max-width: 80%;
         margin: 0 auto;
       }
       li {
@@ -32,7 +32,7 @@
     </style>
   </head>
   <body class="content" onload="loadArtists()">
-    <h1 style="margin-top: 50px">This is a spotify page</h1>
+    <h1 style="margin-top: 50px; text-align: center">This is a spotify page</h1>
     <div class="artist" style="margin-top: 50px">
       <h4>Click for your favorite artist albums</h4>
       <ol id="myList">
@@ -45,27 +45,43 @@
           >
             List Albums
           </button>
-          <button class="btn btn-primary btn-sm">Count Unique</button>
+          <button class="btn btn-primary btn-sm" onclick="countUnique()">
+            Count Unique
+          </button>
         </li>
         <li>
           METALLICA
           <button type="button" class="btn btn-primary btn-sm">
             List Albums
           </button>
-          <button class="btn btn-primary btn-sm">Count Unique</button>
         </li>
         <li>
           behemoth
           <button type="button" class="btn btn-primary btn-sm">
             List Albums
           </button>
-          <button class="btn btn-primary btn-sm">Count Unique</button>
         </li>
       </ol>
     </div>
 
-    <div class="container both-scroll both-mandatory align-center">
-      <div class="wrapper"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col col-12 d-flex"
+          style="margin-bottom: 50px"
+          id="artist1"
+        ></div>
+        <div
+          class="col col-12 d-flex"
+          style="margin-bottom: 50px"
+          id="artist2"
+        ></div>
+        <div
+          class="col col-12 d-flex"
+          style="margin-bottom: 50px"
+          id="artist3"
+        ></div>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -124,6 +140,7 @@
           })
           .then((results) => {
             artist2 = results.data;
+            console.log(artist2);
           })
           .catch((err) => {
             console.error(err);
@@ -140,26 +157,30 @@
           .then((response) => {
             return response.json();
           })
-          .then((results) => {})
+          .then((results) => {
+            artist3 = results.data;
+            console.log(artist3);
+          })
           .catch((err) => {
             console.error(err);
           });
       }
 
       function displayAlbums() {
-        let albumsDiv = document.createElement("div");
-        albumsDiv.classList.add("artistAlbums");
-        let AlbumsList = document.createElement("ol");
-        albumsDiv.appendChild(AlbumsList);
+        let artist = [artist1, artist2, artist3];
+        console.log(artist);
+        for (let j = 0; j <= 2; j++) {
+          let temp = document.getElementById("artist" + (j + 1));
 
-        for (let i = 0; i < artist1.length; i++) {
-          let newtitle = document.createElement("li");
-          newtitle.innerHTML = artist1[i].title;
-          AlbumsList.appendChild(newtitle);
+          temp.style.overflow = "scroll";
+          for (let i = 0; i < artist[j].length; i++) {
+            temp.innerHTML += `<div class="card" style="min-width: 300px;">
+                          <img class="card-img-top" src="${artist[j][i].album.cover}" alt="Card image cap">
+                          <div class="card-body">
+                          </div>
+                        </div>`;
+          }
         }
-        let mainDiv = document.getElementsByClassName("wrapper")[0];
-        console.log(mainDiv);
-        mainDiv.appendChild(albumsDiv);
       }
     </script>
   </body>
