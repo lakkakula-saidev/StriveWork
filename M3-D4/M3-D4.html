@@ -12,7 +12,6 @@
 
     <style>
       .content {
-        width: 80%;
         margin: 0 auto;
         margin-top: 100px;
       }
@@ -39,8 +38,17 @@
         margin-right: 30px;
       }
       input {
-        max-width: 25%;
-        margin-left: 25%;
+        max-width: 90%;
+        margin-left: -25%;
+      }
+
+      #shoppingCart {
+        margin-top: 50px;
+       max-width: 90%;
+        margin-left: -25%;
+      }
+      .cartItem {
+        margin-right: 20px;
       }
     </style>
   </head>
@@ -50,8 +58,11 @@
     data-gr-ext-installed=""
     cz-shortcut-listen="true"
   >
-    <div class="content">
-      <input
+    <div class="container-fluid content">
+      <div class="row">
+      <div class="col-8"><div class="mainDiv"></div></div>
+      <div class="col-4">
+        <input
         class="form-control"
         id="query"
         name="query"
@@ -59,7 +70,11 @@
         type="text"
         onkeyup="queryFunction()"
       />
-      <div class="mainDiv"></div>
+      <div id="shoppingCart">
+        <ul class="list-group">
+      </div>
+    </div>
+      </div>
     </div>
     <script>
       /* <!--
@@ -118,12 +133,22 @@
         );
       }
 
+      function shoppingList(cart) {
+        let getList = document.querySelector(".list-group");
+        getList.innerHTML += `<li class="list-group-item flex d-flex"><img class='cartItem' src="${
+          cart[cart.length - 1].img
+        }" height="25" width="25" alt=""><p  class='cartItem' style="max-width:fit-content;">${
+          cart[cart.length - 1].title
+        }</p></li>`;
+      }
+
       function cartFunction(buttonSelected) {
         let selectedbook = buttonSelected.closest("div.imageDiv");
         let imgSelected = selectedbook.firstChild.src;
-        cartList.push(booksLibrary.filter((book) => book.img === imgSelected));
-        console.log(cartList.flat());
+        cartList.push(booksLibrary.find((book) => book.img === imgSelected));
+        console.log(cartList);
         selectedbook.style.color = "red";
+        shoppingList(cartList);
       }
 
       function skipFunction(buttonSelected) {
