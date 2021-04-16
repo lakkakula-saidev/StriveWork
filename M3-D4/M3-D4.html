@@ -55,6 +55,7 @@
       }
       .cartItem {
         margin-right: 20px;
+        max-width: 70%;
       }
       .cartImage {
         margin-right: 20px;
@@ -64,7 +65,12 @@
         padding-bottom: 8px;
         padding-right: 20px;
         padding-left: 20px;
-        border-bottom: 1px solid black;
+        /* border-bottom: 1px solid black; */
+      }
+
+      .cartDeleteButton {
+        margin-left: -25%;
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -76,8 +82,8 @@
   >
     <div class="container-fluid content">
       <div class="row">
-        <div class="col-8"><div class="mainDiv"></div></div>
-        <div class="col-4">
+        <div class="col-8 column1"><div class="mainDiv"></div></div>
+        <div class="col-4 column2">
           <input
             class="form-control"
             id="query"
@@ -101,6 +107,14 @@
 
             <ul class="list-group"></ul>
           </div>
+          <div id="cartDeleteDiv" style="display: none;">
+          <button
+            type="button"
+            class="btn btn-outline-danger cartDeleteButton py-1"
+            onclick="deleteCart()"
+          >
+            Delete Cart
+          </button>
         </div>
       </div>
     </div>
@@ -140,6 +154,17 @@
         }
       }
 
+      function changeBookStyle(deleteItem) {
+        let imgDivCollec = document.getElementsByClassName("imageDiv");
+        for (let i = 0; i < imgDivCollec.length; i++) {
+          let temp = imgDivCollec[i].querySelector("img");
+          if (temp.src == deleteItem) {
+            imgDivCollec[i].style.color = "black";
+            break;
+          }
+        }
+      }
+
       function displaybooks(booksCatalog) {
         let mainDiv = document.querySelector(".mainDiv");
         if (mainDiv) {
@@ -163,27 +188,34 @@
 
       function shoppingList(cart) {
         let getList = document.querySelector(".list-group");
-        getList.innerHTML += `<li class="cart-group-item flex d-flex justify-content-between"><img class='cartImage' src="${
+        getList.innerHTML += `<li class="cart-group-item flex d-flex "><img class='cartImage' src="${
           cart[cart.length - 1].img
-        }" height="25" width="25" alt=""><p  class='cartItem' style="max-width:fit-content;">${
+        }" height="25" width="25" alt=""><p  class='cartItem flex-grow-1' >${
           cart[cart.length - 1].title
-        }</p><a class='cartButton' onclick='deleteCartItem(this)'><i class="fas fa-trash-alt"></i></a></li>`;
+        }</p><a class='deleteButton' onclick='deleteCartItem(this)'><i class="fas fa-trash-alt"></i></a></li>`;
+        let cartDelDiv = document.getElementById('cartDeleteDiv')
+        cartDelDiv.style.display = 'block'
+      }
+
+      function deleteCart(){
+        let temp = document.getElementsByClassName('cartImage')
+        for (let element of temp){
+          if(cartList.some(book => book.img === element.src )){
+          
+            deleteCartItem(element.parentElement.lastChild)
+          }
+          temp = document.getElementsByClassName('cartImage')
+        }
+
       }
 
       function deleteCartItem(cartItem) {
+        console.log(cartItem)
         let cartParent = document.querySelector(".list-group");
         let deleteItem = cartItem.parentNode.firstChild;
         cartParent.removeChild(deleteItem.parentNode);
         cartList = cartList.filter((book) => book.img !== deleteItem.src);
-        let imgDivCollec = document.getElementsByClassName("imageDiv");
-
-        for (let i = 0; i < imgDivCollec.length; i++) {
-          let temp = imgDivCollec[i].querySelector("img");
-          if (temp.src == deleteItem.src) {
-            imgDivCollec[i].style.color = "black";
-            break;
-          }
-        }
+        changeBookStyle(deleteItem.src);
       }
 
       function cartFunction(buttonSelected) {
