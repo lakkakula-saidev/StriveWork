@@ -63,7 +63,6 @@
         <div class="col-4">
           <form
             class="needs-validation"
-            novalidate
             id="p-submit"
             onsubmit="uploadProduct(event)"
           >
@@ -94,7 +93,7 @@
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 <label for="p-brand">Brand</label>
-                <input type="text" class="form-control" id="p-brand" required />
+                <input required type="text" class="form-control" id="p-brand" />
                 <div class="invalid-tooltip">Please provide a valid brand.</div>
               </div>
               <div class="col-md-12 mb-3">
@@ -152,6 +151,7 @@
             },
           });
           alert("Product deleted Successfully!!!");
+          location.assign("./Index.html");
         } catch {
           throw new Error("Problem Deleting Product");
         }
@@ -172,6 +172,14 @@
         document.querySelector("#p-url").value = productData.imageUrl;
         document.querySelector("#p-price").value = productData.price;
         document.querySelector("#p-delete").classList.remove("d-none");
+      }
+
+      function deleteInputValues() {
+        document.querySelector("#p-name").value = "";
+        document.querySelector("#p-description").value = "";
+        document.querySelector("#p-brand").value = "";
+        document.querySelector("#p-url").value = "";
+        document.querySelector("#p-price").value = "";
       }
 
       async function uploadProduct(event) {
@@ -196,19 +204,15 @@
         });
 
         if (response.ok) {
-          alert("The product is added");
-          const data = await fetch(
-            "https://striveschool-api.herokuapp.com/api/product/",
-            {
-              headers: {
-                Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgwMTk0N2IxZjBmYjAwMTVkOTE3ODYiLCJpYXQiOjE2MTkwMDc4MTUsImV4cCI6MTYyMDIxNzQxNX0.5aA8jMjlV02DqZlvnNr3gvugFDUf0vHMnmO5PZaiUi4",
-              },
-            }
-          );
-          console.log(data.json());
+          if (id) {
+            alert("Product edited Successfully!!!");
+            location.assign("./Index.html");
+            return;
+          }
+          alert("Product added Successfully!!!");
+          deleteInputValues();
         } else {
-          alert("You have a PROBLEM!!!");
+          alert("Problem in Adding Product!!!");
         }
       }
 

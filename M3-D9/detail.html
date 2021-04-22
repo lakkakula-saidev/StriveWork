@@ -1,133 +1,139 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Title</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-    <style>
+    <style></style>
+  </head>
 
-    </style>
-</head>
-
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Amazon</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./backoffice.html">Back Office</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Product details</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-        </div>
+      <a class="navbar-brand" href="#">Amazon</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="./Index.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./backoffice.html">Back Office</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product details</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              >Disabled</a
+            >
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <div class="container mt-4">
-        <h1 class="text-center my-5"></h1>
-        <div class="row" id="contentDiv">
-            <div class="col">
-                <div>
-                    <h6><strong>Details:</strong></h6>
-                    <p id="description"></p>
-                </div>
-                <div>
-                    <p class="d-flex">
-                        <strong>Price:</strong>
-                        <span id="price" style="margin-left: 35px;"></span>
-                    </p>
-                </div>
-                <div>
-                    <p class="d-flex">
-                        <strong>Url:</strong>
-                        <span id="imageUrl" style="margin-left: 50px;"></span>
-                    </p>
-                </div>
-                <div class="d-flex" id="edit">
-                </div>
-
-            </div>
-
-
+      <h1 class="text-center my-5"></h1>
+      <div class="row" id="contentDiv">
+        <div class="col">
+          <div>
+            <h6><strong>Details:</strong></h6>
+            <p id="description"></p>
+          </div>
+          <div>
+            <p class="d-flex">
+              <strong>Price:</strong>
+              <span id="price" style="margin-left: 35px"></span>
+            </p>
+          </div>
+          <div>
+            <p class="d-flex">
+              <strong>Url:</strong>
+              <span id="imageUrl" style="margin-left: 50px"></span>
+            </p>
+          </div>
+          <div class="d-flex" id="edit"></div>
         </div>
+      </div>
     </div>
 
-
-
     <script>
+      const endpoint = "https://striveschool-api.herokuapp.com/api/product/";
+      let id;
 
-        const endpoint = "https://striveschool-api.herokuapp.com/api/product/"
-        let id;
-
-
-
-        function populateProductContent(productData) {
-
-            document.body.getElementsByTagName('h1')[0].innerHTML += productData.name
-            document.querySelector('#description').innerHTML = productData.description
-            document.querySelector('#price').innerHTML = '$' + productData.price
-            document.querySelector('#imageUrl').innerHTML = productData.imageUrl
-            document.querySelector('#edit').innerHTML = `
+      function populateProductContent(productData) {
+        document.body.getElementsByTagName("h1")[0].innerHTML +=
+          productData.name;
+        document.querySelector("#description").innerHTML =
+          productData.description;
+        document.querySelector("#price").innerHTML = "$" + productData.price;
+        document.querySelector("#imageUrl").innerHTML = productData.imageUrl;
+        document.querySelector("#edit").innerHTML = `
                 <a class="btn btn-primary mx-auto w-25" href="backoffice.html?id=${productData._id}">Edit</a>
-            `
+            `;
+      }
+      async function createProduct() {
+        const response = await fetch(endpoint + id, {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgwMTk0N2IxZjBmYjAwMTVkOTE3ODYiLCJpYXQiOjE2MTkwMDc4MTUsImV4cCI6MTYyMDIxNzQxNX0.5aA8jMjlV02DqZlvnNr3gvugFDUf0vHMnmO5PZaiUi4",
+          },
+        });
 
+        const productData = await response.json();
+        populateProductContent(productData);
+      }
 
+      window.onload = function () {
+        let params = new URLSearchParams(document.location.search);
+        id = params.get("id");
 
-        }
-        async function createProduct() {
-            const response = await fetch(
-                endpoint + id,
-                {
-                    headers: {
-                        Authorization:
-                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgwMTk0N2IxZjBmYjAwMTVkOTE3ODYiLCJpYXQiOjE2MTkwMDc4MTUsImV4cCI6MTYyMDIxNzQxNX0.5aA8jMjlV02DqZlvnNr3gvugFDUf0vHMnmO5PZaiUi4",
-                    },
-                }
-            );
-
-            const productData = await response.json()
-            populateProductContent(productData)
-
-
-        }
-
-        window.onload = function () {
-            let params = new URLSearchParams(document.location.search);
-            id = params.get("id");
-
-            createProduct()
-
-        }
+        createProduct();
+      };
     </script>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
